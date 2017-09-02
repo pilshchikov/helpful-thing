@@ -1,0 +1,38 @@
+<form (ngSubmit)="onSubmit(methodsForm, method)"
+      #methodsForm="ngForm">
+  <!--Инпуты-->
+  <div *ngIf="method.inputs != null">
+    <div *ngFor="let input of method.inputs">
+      <md-input-container class="width input-text">
+        <input mdInput type="text" name="{{input.name}}" ngModel placeholder="{{input.placeholder}}"/>
+      </md-input-container>
+    </div>
+  </div>
+  <!--Выпадающие меню-->
+  <div *ngIf="method.menus != null">
+    <div *ngFor="let menu of method.menus">
+      <md-select class="far" ngModel name="{{ menu.name }}" placeholder="{{ menu.description }}">
+        <div *ngFor="let option of menu.options">
+          <md-option value="{{ option.value }}">
+            {{ option.description }}
+          </md-option>
+        </div>
+      </md-select>
+    </div>
+  </div>
+  <!--Селекторы выбора-->
+  <div *ngIf="method.radios != null">
+    <div *ngFor="let radio of method.radios">
+      <div class="far">{{radio.description}}</div>
+      <md-radio-group name="{{radio.name}}" ngModel class="far">
+        <md-radio-button color="primary" *ngFor="let option of radio.options" value="{{option.value}}">
+          {{option.description}}
+        </md-radio-button>
+      </md-radio-group>
+    </div>
+  </div>
+  <!--Сабмит формы-->
+  <button color="primary" type="submit" md-raised-button class="width center far">
+    {{method.executeBtn.label}}
+  </button>
+</form>

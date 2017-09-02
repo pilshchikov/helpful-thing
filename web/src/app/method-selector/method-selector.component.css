@@ -1,0 +1,18 @@
+.width {
+  width: 100%;
+}
+
+.toggle {
+  font-size: 140%;
+}
+
+.liner {
+  border: solid white;
+  border-bottom-color: #FF4081;
+  border-width: 2px;
+}
+
+.clean {
+  position: absolute;
+  right: 16px;
+}

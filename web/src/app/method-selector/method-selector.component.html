@@ -1,0 +1,29 @@
+<div class="col-md-4 col-sm-4 col-xs-2">
+  <md-list>
+    <md-list-item>
+      <!--тогл включения режима мультифромы-->
+      <md-slide-toggle
+        class="example-margin center-block toggle"
+        color="primary"
+        (change)="onToggle()">мультиформа
+      </md-slide-toggle>
+      <!--убрать все активные формы-->
+      <button *ngIf="multiform" md-raised-button
+              class="clean center-block close-btn liner"
+              (click)="clearForms()">
+        Очистить
+      </button>
+    </md-list-item>
+    <!--список доступных методов-->
+    <div *ngIf="formBuilder != null && formBuilder.methods.length > 0">
+      <md-list-item *ngFor="let method of formBuilder.methods">
+        <button id="{{method.methodName}}"
+                class="width"
+                (click)="selectMethod(method)"
+                md-raised-button>
+          {{method.methodDescription}}
+        </button>
+      </md-list-item>
+    </div>
+  </md-list>
+</div>

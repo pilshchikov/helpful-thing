@@ -1,0 +1,38 @@
+<div class="col-md-7 col-sm-8 col-xs-8">
+  <div *ngIf="methods.length > 0">
+    <!--форма метода-->
+    <div *ngFor="let methodForm of methods">
+      <md-card class="far">
+        <!--Наименование появляется только если выбрано несколько методов-->
+        <md-card-header class="width">
+          <md-card-title *ngIf="multiform || methods.length > 1">
+            {{methodForm.methodDescription}}
+          </md-card-title>
+          <md-card-subtitle>
+            <div class="line"></div>
+          </md-card-subtitle>
+        </md-card-header>
+        <md-card-content>
+          <!--сама форма с интерфейсами ввода-->
+          <app-method-form
+            (executeMethod)="onExecute($event, methodForm)"
+            [method]="methodForm"></app-method-form>
+          <!--полоса загрузки-->
+          <div *ngIf="methodForm.loadingState == true && methodForm.response == null"
+               class="container far progress-infinit">
+            <md-progress-bar mode="indeterminate"></md-progress-bar>
+          </div>
+          <!--результат выполнения метода-->
+          <app-response-form [method]="methodForm"></app-response-form>
+        </md-card-content>
+      </md-card>
+      <!--закрыть форму-->
+      <button md-raised-button
+              class="close-btn liner"
+              *ngIf="multiform || methods.length > 1"
+              (click)="close(methodForm)">
+        Закрыть
+      </button>
+  </div>
+</div>
+</div>
