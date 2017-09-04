@@ -5,13 +5,13 @@
       <md-slide-toggle
         class="example-margin center-block toggle"
         color="primary"
-        (change)="onToggle()">мультиформа
+        (change)="onToggle()">Multiform
       </md-slide-toggle>
       <!--убрать все активные формы-->
       <button *ngIf="multiform" md-raised-button
               class="clean center-block close-btn liner"
               (click)="clearForms()">
-        Очистить
+        Clear all
       </button>
     </md-list-item>
     <!--список доступных методов-->

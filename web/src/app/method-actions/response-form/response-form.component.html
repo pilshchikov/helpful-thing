@@ -7,17 +7,17 @@
   <!--поле с подробностями запрос/ответ-->
   <div *ngIf="method.response.request != null && method.response.response != null">
     <button md-raised-button (click)="method.learnMore = !method.learnMore">
-      Узнать больше
+      More
     </button>
     <div *ngIf="method.learnMore == true" class="response response-content">
       <!--запрос-->
       <div class="responseItem">
-        <div>Запрос:</div>
+        <div>Request:</div>
         <div>{{method.response.request}}</div>
       </div>
       <!--ответ-->
       <div class="responseItem">
-        <div>Ответ:</div>
+        <div>Response:</div>
         <div>{{method.response.response}}</div>
       </div>
     </div>
