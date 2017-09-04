@@ -1,6 +1,6 @@
 <div align="center">
   <img width="900" heigth="600" src="https://i.imgur.com/pfwE7hZ.png">
-<div/>
+</div>
 
 # Сервис полезных штук
 
