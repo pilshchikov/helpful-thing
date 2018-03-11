@@ -7,10 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-/**
- * @author Stepan Pilshchikov
- * @created 19.06.17
- */
 @Accessors(fluent = true)
 @Getter
 @Setter

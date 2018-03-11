@@ -10,21 +10,21 @@ import java.util.List;
 public class CommonExecutorFunctions {
 
     /**
-     * Получаем енам по значению стинги
+     * Get enum by value
      *
-     * @param enumClass набор енамов из которых выбираем
-     * @param value     стринговое значение по которому ищем
-     * @return найденный енам
+     * @param enumClass enum class
+     * @param value     item name
+     * @return found enum
      */
     protected <T extends Enum> T getEnumByValue(T[] enumClass, String value) {
         return Arrays.stream(enumClass).filter(item -> item.name().equals(value)).findFirst().get();
     }
 
     /**
-     * Ответ от с вложенными мапами объектов преобразуем в лист стрингов
+     * Map to list
      *
-     * @param map ответ
-     * @return результат
+     * @param map map to convert
+     * @return List<Object>
      */
     protected List<String> pretty(HashMap<String, Object> map) {
 

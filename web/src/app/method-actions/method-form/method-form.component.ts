@@ -2,9 +2,6 @@ import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {MethodForm} from '../../services/method-form';
 
-/**
- * Компонент отдельного метода
- */
 @Component({
   selector: 'app-method-form',
   templateUrl: './method-form.component.html',
@@ -19,10 +16,10 @@ export class MethodFormComponent {
   }
 
   /**
-   * На сабмит формы шлем данные в родительский компонент
+   * Submit form data to parent component
    *
-   * @param {NgForm} submitForm         заполненая форма
-   * @param {MethodForm} selectedForm   с какой формы выполнили сабмит
+   * @param {NgForm} submitForm         form data
+   * @param {MethodForm} selectedForm   form type with be submitted
    */
   onSubmit(submitForm: NgForm, selectedForm: MethodForm) {
     submitForm.value.methodName = selectedForm.methodName;

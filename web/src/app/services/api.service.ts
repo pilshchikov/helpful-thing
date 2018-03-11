@@ -6,16 +6,17 @@ import {environment} from '../../environments/environment';
 import {Inject} from "@angular/core";
 
 /**
- * Сервия для запросов на сервер
+ * Service for server requests
  */
 export class ApiService {
+
   /**
-   * @type {string} Урл для получения списока методов
+   * @type {string} Methods list url
    */
   private methodsURL = environment.API + '/methods';
 
   /**
-   * @type {string} урл для выполнения метода
+   * @type {string} Execute method url
    */
   private executeMethodURL = environment.API + '/execute';
 
@@ -23,7 +24,7 @@ export class ApiService {
   }
 
   /**
-   * Сетим стандартные хедеры
+   * Set default headers
    */
   private setHeaders(): Headers {
     const headers = new Headers();
@@ -33,36 +34,36 @@ export class ApiService {
   }
 
   /**
-   * Запрос GET к ресурсу
-   * @param {string} url          адрес русурса
-   * @returns {Observable<any>}   ответ
+   * GET request to server
+   * @param {string} url          server url
+   * @returns {Observable<any>}   response
    */
   private get (url: string): Observable<any> {
     return this.http.get(url, {headers: this.setHeaders()}).map((res: Response) => res.json());
   }
 
   /**
-   * Запрос POST к ресурсы
-   * @param {string} url          адрес ресурса
-   * @param body                  тело запроса
-   * @returns {Observable<any>}   ответ
+   * POST request to server
+   * @param {string} url          server url
+   * @param body                  request body
+   * @returns {Observable<any>}   response
    */
   private post(url: string, body: any): Observable<any> {
     return this.http.post(url, body).map(res => res.json());
   }
 
   /**
-   * Выполняем метод с параметрами
-   * @param body                  значения с формы метода
-   * @returns {Observable<any>}   ответ
+   * Execute method
+   * @param body                  method values
+   * @returns {Observable<any>}   response
    */
   executeMethod(body: any) {
     return this.post(this.executeMethodURL, body);
   }
 
   /**
-   * Получаем список методов
-   * @returns {Observable<any>}   ответ
+   * Get methods list
+   * @returns {Observable<any>}   response
    */
   getMethods(): Observable<any> {
     return this.get(this.methodsURL);

@@ -32,9 +32,9 @@ public class FormGenerator {
     }
 
     /**
-     * Определяемся какой набор форм будем отображать клиенту
+     * Setup available forms
      *
-     * @return список доступных форм
+     * @return list of forms
      */
     private FormBuilder initElements() {
 

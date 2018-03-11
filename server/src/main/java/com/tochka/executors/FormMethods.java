@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Список доступных методов
+ * List of available forms
  */
 @Getter
 @RequiredArgsConstructor

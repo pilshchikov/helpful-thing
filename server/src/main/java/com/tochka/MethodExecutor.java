@@ -12,10 +12,10 @@ import java.util.HashMap;
 public class MethodExecutor {
 
     /**
-     * Выполняем метод по запросу
+     * Forward request to specific form module
      *
-     * @param params параметры запроса
-     * @return ответ
+     * @param params request params
+     * @return request
      */
     public <T extends Executor> Response execute(HashMap<String, String> params) {
 

@@ -1,5 +1,5 @@
 /**
- * Обрезанная версия
+ * Cutted version
  */
 export const environment = {
   production: true,

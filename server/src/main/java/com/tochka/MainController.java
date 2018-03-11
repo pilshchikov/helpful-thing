@@ -4,12 +4,7 @@ import com.tochka.models.FormBuilder;
 import com.tochka.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -20,7 +15,7 @@ public class MainController {
     private MethodExecutor executor;
 
     /**
-     * @return список доступных методов с описанием интерфейсов взаимодействия
+     * @return forms content list
      */
     @CrossOrigin
     @ResponseBody
@@ -31,10 +26,10 @@ public class MainController {
     }
 
     /**
-     * Выполняем пришедший запрос и посылаем в ответ форму с результатами выполнения
+     * Execute method
      *
-     * @param request параметры запроса
-     * @return форма ответа
+     * @param request params
+     * @return response
      */
     @CrossOrigin
     @ResponseBody

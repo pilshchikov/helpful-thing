@@ -4,73 +4,69 @@ import {MethodForm} from "./method-form";
 import {Subject} from "rxjs/Subject";
 
 /**
- * Сервис форм методов
+ * Form service
  */
 @Injectable()
 export class MethodsFormService {
 
   /**
-   * @type {Subject<any>}   Канал для получения списка со всеми видами форм
+   * @type {Subject<any>}   form channel
    */
   form = new Subject<any>();
 
   /**
-   * Активные формы методов
+   * Active forms list
    * @type {Array}
    */
   selectedMethods = [];
 
   /**
-   * @type {Subject<Array<MethodForm>>}   Канал для получения списка активных методов
+   * @type {Subject<Array<MethodForm>>}   active forms channel
    */
   selectedMethodsSubj = new Subject<Array<MethodForm>>();
 
   /**
-   * @type {Subject<Boolean>}   Канал для получения статуса режима мультиформы
+   * @type {Subject<Boolean>}   Multiform notification channel
    */
   multiformSubj = new Subject<Boolean>();
 
   /**
-   * @type {boolean} cтатус режима мультиформы
+   * @type {boolean} multiform toggle
    */
   multiform = false;
 
-  /**
-   * Мапим поток с формой
-   * @param {ApiService} apiService
-   */
   constructor(private apiService: ApiService) {
     apiService.getMethods().subscribe(res => this.form.next(res));
   }
 
   /**
-   * @returns {Observable<any>}    поток с объектом форм
+   * @returns {Observable<any>}    get form channel
    */
   getForm() {
     return this.form.asObservable();
   }
 
   /**
-   * @returns {Observable<Array<MethodForm>>}   потом со спиской выбранных форм
+   * @returns {Observable<Array<MethodForm>>}   channel with active forms
    */
   getSelectedMethods() {
     return this.selectedMethodsSubj.asObservable();
   }
 
   /**
-   * @returns {Observable<Boolean>}     Поток со режимом мультиформы
+   * @returns {Observable<Boolean>}     multiform channel
    */
   getMultiform() {
     return this.multiformSubj.asObservable();
   }
 
   /**
-   * Добавляем форму выбранного метода в список активных форм
-   * @param {MethodForm} method   выбранная форма
+   * Add form to active list
+   * @param {MethodForm} method   form to add
    */
   addToSelected(method: MethodForm) {
 
-    // чтобы формы были независимыми приходится создавать новый объект
+    // for addition need to create new one with same fields
     let newMethod: MethodForm = {};
 
     if (method.hasOwnProperty('radios')) newMethod.radios = method.radios;
@@ -95,7 +91,7 @@ export class MethodsFormService {
   }
 
   /**
-   * Чистим список активных форм
+   * Clean selected forms
    */
   clearAllSelected() {
     this.selectedMethods = [];
@@ -103,7 +99,7 @@ export class MethodsFormService {
   }
 
   /**
-   * Меняем статус мультифромы
+   * Toggle multiform state
    */
   switchMultiform() {
     this.multiform = !this.multiform;
@@ -111,7 +107,7 @@ export class MethodsFormService {
   }
 
   /**
-   * Удаляем определенную   форму метода
+   * Deleted specific form
    * @param {MethodForm}    method
    */
   deleteFromSelected(method: MethodForm) {
@@ -120,9 +116,9 @@ export class MethodsFormService {
   }
 
   /**
-   * Выпроняем метод с формы
-   * @param values                параметры метода
-   * @returns {Observable<any>}   ответ
+   * Execute method
+   * @param values                params
+   * @returns {Observable<any>}   response
    */
   executeMethod(values: any) {
     return this.apiService.executeMethod(values);

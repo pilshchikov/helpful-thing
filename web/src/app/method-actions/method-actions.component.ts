@@ -3,7 +3,7 @@ import {MethodForm} from '../services/method-form';
 import {MethodsFormService} from "../services/methods-form-service";
 
 /**
- * Компонент со списком методов
+ * Forms list component
  */
 @Component({
   selector: 'app-method-actions',
@@ -13,19 +13,19 @@ import {MethodsFormService} from "../services/methods-form-service";
 export class MethodActionsComponent {
 
   /**
-   * Активные формы на страницы
+   * List of selected forms
    * @type {Array}
    */
   methods: Array<MethodForm> = [];
 
   /**
-   * Статус режима мультиформы
+   * Multiform toggle
    */
   multiform: Boolean;
 
   /**
-   * Мапим список выбранных методов и статус выбран ли режим мультиформы
-   * @param {MethodsFormService} methodService  сервис методов
+   * Subscribe on form list and multiform toggle
+   * @param {MethodsFormService} methodService  form list service
    */
   constructor(private methodService: MethodsFormService) {
     this.methodService.getSelectedMethods().subscribe(item => this.methods = item);
@@ -33,9 +33,9 @@ export class MethodActionsComponent {
   }
 
   /**
-   * Хэндлер на выполнение метода
-   * @param {Array<string>} values  значения из формы метода
-   * @param {MethodForm} form       на какой из форм произошло событие
+   * Executed form with submitted data
+   * @param {Array<string>} values  form data
+   * @param {MethodForm} form       form object
    */
   onExecute(values: Array<string>, form: MethodForm) {
     form.loadingState = true;
@@ -44,8 +44,8 @@ export class MethodActionsComponent {
   }
 
   /**
-   * Закрываем форму метода
-   * @param {MethodForm} form   форма
+   * Close form
+   * @param {MethodForm} form   form object
    */
   close(form: MethodForm) {
     this.methodService.deleteFromSelected(form);

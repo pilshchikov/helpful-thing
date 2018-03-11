@@ -1,5 +1,5 @@
 /**
- * Модель формы метода
+ * Form model
  */
 export interface MethodForm {
   loadingState?: Boolean;

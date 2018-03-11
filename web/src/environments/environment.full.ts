@@ -1,5 +1,5 @@
 /**
- * Полная версия
+ * Full version
  */
 export const environment = {
   production: true,

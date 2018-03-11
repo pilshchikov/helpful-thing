@@ -2,44 +2,46 @@
   <img width="900" heigth="600" src="https://i.imgur.com/pfwE7hZ.png">
 </div>
 
-# Сервис полезных штук
+# Magic wand (not a final name)
 
-- Spring Boot 1.5.4
-- Angular 4
+- Spring Boot 2.0.0
+- Angular 4+
 - Angular Material
 
-### Необходимо иметь:
+### For build need to have:
  - java 8
  - angular/cli
  - docker
 
-Сервис сделан для замены повсемесно локально используемых скриптов/наборов запросов для взаимодействия с тестовым стендом или для подготовки тестовых данных.
+Framework for tasks when you need to unite all common used scripts and make user friendly interface but your do not want to write all web interface.
 
-Все генерируемые формы зависят от серверной части. Чтобы сделать новую форму необходимо: 
- - добавить форму в FormProvider
- - создать енам в FormMethods
- - унаследовавшись от интерфейса Executer реализовать логику взаимодейтвия с формой
+All interface created from java objects. For each form you can bind your own logic 
 
-# Как запускать
+####How to add new form: 
+ - add form fields description in FormProvider.java
+ - add enum in FormMethods.java
+ - extend Executer.java interface and write logic for form
 
-#### Если надо сделать контейнер все в одном с полной версией
+## How to run
+
+#### Build and run all in one full version
 ```bash
 ./build.sh
-docker run --name utils.web -p 80:8080 utils.web:latest
+docker run --name utils.web -p 80:8080 magic.wand:latest
 ```
 
-#### Если надо сделать контейнер все в одном с урезанной версией
+#### Build and run all in one cutted version
 ```bash
 ./build-cutted.sh
-docker run --name utils.web.cutted -p 80:8080 utils.web:cutted
+docker run --name utils.web.cutted -p 80:8080 magic.wand:cutted
 ```
 
-#### Локальный запуск серверной части
+#### Local run server side
 ```bash
 mvn spring-boot:run -Dform.version=[FULL, CUTTED]
 ```
 
-#### Локальный запуск клиентской части
+#### Local run for web side
 ```bash
 npm install
 ng serve

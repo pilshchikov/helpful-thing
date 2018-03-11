@@ -4,7 +4,7 @@ import {ApiService} from '../services/api.service';
 import {MethodsFormService} from "../services/methods-form-service";
 
 /**
- * Компонент со списком доступных методов для взаимодействия
+ * Forms list
  */
 @Component({
   selector: 'app-method-selector',
@@ -13,12 +13,12 @@ import {MethodsFormService} from "../services/methods-form-service";
 })
 export class MethodSelectorComponent implements OnInit {
   /**
-   * Объект с формами для отображения
+   * forms list
    */
   formBuilder;
 
   /**
-   * Статус режима мультиформы
+   * Multiform toggle
    */
   multiform;
 
@@ -26,7 +26,7 @@ export class MethodSelectorComponent implements OnInit {
   }
 
   /**
-   * Мапим статус и форму
+   * Subscribe on services
    */
   ngOnInit() {
     this.methodService.getForm().subscribe(item => this.formBuilder = item);
@@ -34,7 +34,7 @@ export class MethodSelectorComponent implements OnInit {
   }
 
   /**
-   * Добавляем метод в список активных
+   * Add method in active list
    * @param {MethodForm} selectedMethod
    */
   selectMethod(selectedMethod: MethodForm) {
@@ -42,14 +42,14 @@ export class MethodSelectorComponent implements OnInit {
   }
 
   /**
-   * Чистим форму от всех методов
+   * Close all selected forms
    */
   clearForms() {
     this.methodService.clearAllSelected();
   }
 
   /**
-   * Включаем/выключаем рижим мультиформы
+   * Multiform toggle
    */
   onToggle() {
     this.methodService.switchMultiform();

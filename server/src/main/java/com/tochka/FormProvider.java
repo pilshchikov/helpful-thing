@@ -10,10 +10,7 @@ import static com.tochka.executors.FormMethods.*;
 import static java.util.Collections.singletonList;
 
 /**
- * @author Stepan Pilshchikov
- * @created 31.08.17
- * <p>
- * Формы интерфейсов для взаимодействия с сервисами
+ * Set of forms
  */
 @Repository
 public class FormProvider {

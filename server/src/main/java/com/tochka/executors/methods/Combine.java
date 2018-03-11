@@ -9,9 +9,7 @@ import java.util.HashMap;
 
 import static java.util.Collections.*;
 
-/**
- * Меняем пароль у юзера
- */
+
 public class Combine extends CommonExecutorFunctions implements Executor {
 
     @Override
@@ -38,7 +36,7 @@ public class Combine extends CommonExecutorFunctions implements Executor {
             return Response.builder()
                     .request(combinedRequest)
                     .response(e.getMessage())
-                    .responseFields(singletonList("Статус: что-то пошло не так"))
+                    .responseFields(singletonList("Something go wrong T_T"))
                     .build();
         }
     }
